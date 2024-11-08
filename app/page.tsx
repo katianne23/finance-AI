@@ -4,7 +4,7 @@ import Navbar from "./_components/navbar";
 
 const Home = async () => {
   const { userId } = await auth();
-  if (userId) {
+  if (!userId) {
     redirect('/login');
   }
 

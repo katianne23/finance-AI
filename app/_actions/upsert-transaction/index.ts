@@ -25,11 +25,11 @@ export const upsertTransaction = async (params: UpsertTransactionParams) => {
 
     if (params.id) {
         await db.transaction.upsert({
-            where: {
-                id: params.id,
-            },
             update: { ...params, userId },
             create: { ...params, userId },
+            where: {
+                id: params.id ?? 0,
+            },
         });
     } else {
         await db.transaction.create({
