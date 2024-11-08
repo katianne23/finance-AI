@@ -25,7 +25,7 @@ const TransactionsPage = async () => {
             <div className="space-y-6 overflow-hidden p-6">
                 <div className="p-6 space-y-6">
                     <div className="flex w-full justify-between items-center">
-                        <h1 font-bold text-2xl>Transações</h1>
+                        <h1 className="font-bold text-2xl">Transações</h1>
                         <UpsertTransactionButton />
                     </div>
                     <DataTable columns={Transactioncolumns} data={transactions} />
