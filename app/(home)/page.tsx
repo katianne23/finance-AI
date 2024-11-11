@@ -7,6 +7,7 @@ import { isMatch } from "date-fns";
 import TransactionPieChart from "./_components/transactions-pie-chart";
 import { getDashboard } from "../_data/get-dashboard";
 import ExpensesPerCategory from "./_components/expenses-per-category";
+import LastTransaction from "./_components/last-transaction";
 
 interface HomeProps {
   searchParams: {
@@ -30,21 +31,22 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
   return (
     <>
       <Navbar />
-      <div className="p-6 space-y-6">
+      <div className="flex h-full flex-col space-y-6 overflow-hidden p-6">
         <div className="flex justify-between">
           <h1 className="font-bold text-2xl">Dashboard</h1>
           <TimeSelect />
         </div>
-        <div className="grid grid-cols-[2fr, 1fr]">
+        <div className="grid h-full grid-cols-[2fr,1fr] gap-6 overflow-hidden">
           <div className="flex flex-col gap-6">
             <SummaryCards month={month} {...dashboard} />
-            <div className="grid grid-cols-3 grid-rows-1 gap-6">
+            <div className="grid h-full grid-cols-3 grid-rows-1 gap-6 overflow-hidden">
               <TransactionPieChart {...dashboard} />
               <ExpensesPerCategory
                 expensesPerCategory={dashboard.totalExpensePerCategory}
               />
             </div>
           </div>
+          <LastTransaction lastTransaction={dashboard.lastTransactions} />
         </div>
       </div>
     </>
