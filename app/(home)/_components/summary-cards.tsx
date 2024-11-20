@@ -7,10 +7,11 @@ interface SummaryCards {
     depositsTotal: number;
     investmentsTotal: number;
     expensesTotal: number;
+    userCanAddTransaction?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SummaryCards = async ({ month, balance, depositsTotal, investmentsTotal , expensesTotal }: SummaryCards) => {
+const SummaryCards = async ({ month, balance, depositsTotal, investmentsTotal, expensesTotal, userCanAddTransaction }: SummaryCards) => {
 
 
     return (
@@ -20,6 +21,7 @@ const SummaryCards = async ({ month, balance, depositsTotal, investmentsTotal , 
                 title="Saldo"
                 amount={balance}
                 size="large"
+                userCanAddTransaction={userCanAddTransaction}
             />
 
             <div className="grid grid-cols-3 gap-6">
