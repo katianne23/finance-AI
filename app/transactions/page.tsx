@@ -8,22 +8,17 @@ import { ScrollArea } from "../_components/ui/scroll-area";
 import AddTransactionButton from "../_components/add-transaction-button";
 import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 
-
 const TransactionsPage = async () => {
     const { userId } = await auth()
     if (!userId) {
         redirect('/login')
     }
-
     const transactions = await db.transaction.findMany({
         where: {
             userId,
         }
     });
-
-
     const userCanAddTransaction = await canUserAddTransaction();
-
     return (
         <>
             <Navbar />
